@@ -9,8 +9,7 @@ import 'package:gallery_view/view_photo.dart';
 class GalleryView extends StatelessWidget {
   final List<String> imageUrlList;
   final int crossAxisCount;
-  const GalleryView(
-      {required Key key, required this.imageUrlList, this.crossAxisCount = 3});
+  const GalleryView({required Key key, required this.imageUrlList, this.crossAxisCount = 3});
 
   static const MethodChannel _channel = const MethodChannel('gallery_view');
 
@@ -21,7 +20,6 @@ class GalleryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: Padding(
@@ -29,9 +27,7 @@ class GalleryView extends StatelessWidget {
         child: GridView.builder(
             itemCount: imageUrlList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 6.0,
-                mainAxisSpacing: 6.0),
+                crossAxisCount: crossAxisCount, crossAxisSpacing: 6.0, mainAxisSpacing: 6.0),
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                 onTap: () {
@@ -53,8 +49,7 @@ class GalleryView extends StatelessWidget {
                       child: CachedNetworkImage(
                         fit: BoxFit.fill,
                         imageUrl: imageUrlList[index],
-                        placeholder: (context, url) => Container(
-                            child: Center(child: CupertinoActivityIndicator())),
+                        placeholder: (context, url) => Container(child: Center(child: CupertinoActivityIndicator())),
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       )),
                 ),
